@@ -11,7 +11,7 @@ require_once 'vendor/autoload.php';
 use Transip\Api\Library\TransipAPI;
 use Transip\Api\Library\Repository\VpsRepository;
 
-$api = new TransipAPI(getApiUser(), getApiKey());
+$api = getApiClient();
 $repository = $api->vps();
 
 try {
@@ -42,7 +42,7 @@ try {
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($vps->getName()); ?></h5>
                             <p class="card-text">
-                                Description: &quot;<span class="description"><?php echo htmlspecialchars($vps->getDescription()) ?>&quot;</span><br />
+                                Description: &quot;<span class="description"><?php echo htmlspecialchars($vps->getDescription()) ?></span>&quot;<br />
                                 Status: <span class="status-<?php echo htmlspecialchars($vps->getStatus()); ?>"><?php echo htmlspecialchars($vps->getStatus()); ?></span>
                             </p>
                         </div>

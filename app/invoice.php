@@ -4,9 +4,7 @@ require_once 'vendor/autoload.php';
 require_once 'auth/session.php';
 require_once 'includes/api.php';
 
-use Transip\Api\Library\TransipAPI;
-
-$api = new TransipAPI(getApiUser(), getApiKey());
+$api = getApiClient();
 $repository = $api->invoicePdf();
 
 try {
