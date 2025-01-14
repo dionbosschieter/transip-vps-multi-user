@@ -1,0 +1,10 @@
+{
+    "require": {
+        "transip/transip-api-php": "^6.53"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
