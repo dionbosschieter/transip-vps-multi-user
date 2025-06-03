@@ -10,6 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role'] = 'admin';
         header('Location: dashboard.php');
         exit;
+    } elseif ($username === 'dev' && $password === 'dev') {
+        $_SESSION['logged_in'] = true;
+        $_SESSION['role'] = 'dev';
+        header('Location: dashboard.php');
+        exit;
     } elseif ($username == 'finance' && $password == 'finance') {
         $_SESSION['logged_in'] = true;
         $_SESSION['role'] = 'finance';

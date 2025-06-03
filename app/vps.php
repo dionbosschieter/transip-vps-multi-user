@@ -1,21 +1,25 @@
 <?php
 require_once 'auth/session.php';
 require_once 'auth/roles.php';
-checkRole('admin');
+checkRoles(['admin', 'dev']);
 
 require_once 'includes/header.php';
 require_once 'includes/menu.php';
 require_once 'includes/api.php';
 
 require_once 'vendor/autoload.php';
-use Transip\Api\Library\TransipAPI;
-use Transip\Api\Library\Repository\VpsRepository;
+
+use Transip\Api\Library\Entity\Vps;
 
 $api = getApiClient();
 $repository = $api->vps();
 
 try {
     $vpsList = $repository->getAll();
+    if (getRole() == 'dev') {
+        $vpsList = array_filter($vpsList, fn (Vps $vps) => str_contains($vps->getDescription(), 'dev'));
+        // $vpsList = array_filter($vpsList, fn (Vps $vps) => in_array('dev', $vps->getTags()));
+    }
 } catch (Exception $e) {
     echo "<div class='alert alert-danger'>Error: {$e->getMessage()}</div>";
     exit;

@@ -5,10 +5,12 @@
             <li class="nav-item">
                 <a href="dashboard.php" class="nav-link text-white">Dashboard</a>
             </li>
+            <?php if ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'finance'): ?>
             <li class="nav-item">
                 <a href="invoices.php" class="nav-link text-white">Invoices</a>
             </li>
-            <?php if ($_SESSION['role'] === 'admin'): ?>
+            <?php endif; ?>
+            <?php if ($_SESSION['role'] === 'admin' || $_SESSION['role'] === 'dev'): ?>
                 <li class="nav-item">
                     <a href="vps.php" class="nav-link text-white">VPSes</a>
                 </li>

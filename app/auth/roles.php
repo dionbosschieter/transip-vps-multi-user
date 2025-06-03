@@ -1,6 +1,7 @@
 <?php
-function checkRole($requiredRole) {
-    if (!isset($_SESSION['role']) || $_SESSION['role'] !== $requiredRole) {
+
+function checkRoles(array $requiredRoles) {
+    if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], $requiredRoles)) {
         echo "Access denied.";
         exit;
     }
